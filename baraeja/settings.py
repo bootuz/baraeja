@@ -137,6 +137,7 @@ if not DEBUG:
 # Media Files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'uploads/'
+print(MEDIA_ROOT)
 
 
 # Default primary key field type
