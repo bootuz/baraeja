@@ -1,0 +1,30 @@
+#search-form {
+    margin-top: 250px;
+}
+
+#searchbar {
+    width: 600px;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-radius: 0;
+    border-bottom-width: 2px;
+    padding-left: 0;
+}
+#searchbar:focus {
+    outline: none;
+    border-color: #0275d8;
+}
+
+#search-button {
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-bottom: 0;
+    border-radius: 0;
+    color: #0275d8;
+
+}
+#searchbar::placeholder {
+    color: darkgray;
+}
