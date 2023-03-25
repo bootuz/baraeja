@@ -1,13 +1,13 @@
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
 
-from app.models import Book
+from app.models import Book, Author
 
 
 @require_GET
 def get_all_books(request):
-    books = get_list_or_404(Book)
+    books = Book.objects.all()
     return HttpResponse(books)
 
 
@@ -18,3 +18,16 @@ def get_book(request, slug: str):
         book.increment_view_count()
     request.session[str(book.id)] = True
     return HttpResponse(book)
+
+
+@require_GET
+def get_all_authors(request):
+    authors = Author.objects.all()
+    print(type(request))
+    return HttpResponse(authors)
+
+
+@require_GET
+def get_author(request, slug: str):
+    author = get_object_or_404(Author, slug=slug)
+    return HttpResponse(author)
