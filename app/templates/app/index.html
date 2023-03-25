@@ -1,0 +1,12 @@
+{% extends 'app/base.html' %}
+
+{% block main %}
+    <div class="d-flex align-items-center justify-content-center flex-column">
+        <form class="d-flex" id="search-form" method="get" action="{% url 'books:search' %}">
+            <div class="input-group mb-3">
+                <input required name="q" type="search" id="searchbar" class="form-control shadow-none" placeholder="Тхылъым е тхакӏуэм и цӏэр" aria-label="Recipient's username" aria-describedby="search-button" autocomplete="off">
+                <button class="btn" type="submit" id="search-button"><i class="bi-search"></i></button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
