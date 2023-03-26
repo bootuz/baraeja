@@ -1,10 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'app/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+
+{% endblock %}
+
+{% block main %}
+    <div class="d-flex align-items-center justify-content-center flex-column mt-5 fw-light">
+        <div class="row justify-content-center">
+            <div class="col-md-3">
+                <img src="{% static 'app/images/shakue_fyce.jpg' %}" alt="Book Cover" class="img-fluid">
+            </div>
+            <div class="col-md-3">
+                <h2 class="text-body-secondary fw-light">Щӏакӏуэ фӏыцӏэ</h2>
+                <ul class="list-unstyled">
+                    <li class="text-body-secondary pb-1"><strong>Зытхар:</strong> Мафӏэдз Сэрэбий</li>
+                    <li class="text-body-secondary pb-1"><strong>Жанрыр:</strong> Литературэ</li>
+                    <li class="text-body-secondary pb-1"><strong>Къыдэзыгъэкӏар:</strong> Эльбрус</li>
+                    <li class="text-body-secondary pb-1"><strong>Къыщыдэкӏар:</strong> 2023</li>
+                    <li class="text-body-secondary pb-1"><strong>ISBN:</strong> 978-3-16-148410-0</li>
+                </ul>
+                <div id="download-buttons">
+                    <button type="button" class="btn btn-primary">PDF</button>
+                    <button type="button" class="btn btn-primary">EPUB</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

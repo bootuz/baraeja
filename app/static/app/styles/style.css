@@ -2,6 +2,24 @@
     margin-top: 250px;
 }
 
+#header-searchbar {
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+    border-radius: 0;
+    border-bottom-width: 2px;
+    padding-left: 0;
+    border-color: #0275d8;
+}
+#header-searchbar:focus {
+    outline: none;
+}
+
+#header-searchbar::placeholder {
+    color: gray;
+    font-weight: 250;
+}
+
 #searchbar {
     width: 600px;
     border-right: 0;
@@ -26,7 +44,7 @@
 
 }
 #searchbar::placeholder {
-    color: darkgray;
+    color: gray;
     font-weight: 250;
 }
 
@@ -39,4 +57,10 @@
 #new-books {
     max-width: 660px;
     margin-top: 40px;
+}
+
+#download-buttons button {
+    width: 90px;
+    height: 45px;
+    font-weight: bold;
 }
