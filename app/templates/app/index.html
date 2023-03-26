@@ -1,12 +1,58 @@
 {% extends 'app/base.html' %}
+{% block title %}
+    Бэрэеджэ - Адыгэ онлайн бибилотекэ
+{% endblock %}
 
 {% block main %}
     <div class="d-flex align-items-center justify-content-center flex-column">
         <form class="d-flex" id="search-form" method="get" action="{% url 'books:search' %}">
             <div class="input-group mb-3">
-                <input required name="q" type="search" id="searchbar" class="form-control shadow-none" placeholder="Тхылъым е тхакӏуэм и цӏэр" aria-label="Recipient's username" aria-describedby="search-button" autocomplete="off">
-                <button class="btn" type="submit" id="search-button"><i class="bi-search"></i></button>
+                <input name="q" type="search" id="searchbar" class="form-control shadow-none" placeholder="Тхылъым е тхакӏуэм и цӏэр" aria-label="Recipient's username" aria-describedby="search-button" autocomplete="off">
+                <button class="btn" type="submit" id="search-button"><i class="bi-search fs-5"></i></button>
             </div>
         </form>
+    </div>
+    <div>
+    </div>
+    <div id="new-books" class="container d-flex flex-column">
+        <h5 class="pb-2 text-body-secondary fw-light">Тхылъыщӏэхэр</h5>
+        <div class="row fw-light">
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Аслъэн сымаджэ</a>
+                <p class="text-secondary">Тхакӏуэм и цӏэр</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Къру закъуэ</a>
+                <p class="text-secondary">Тхакӏуэм и цӏэр</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Мазизэ</a>
+                <p class="text-secondary">Шэджыхьэщӏэ Хьэмыщэ</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Адыгэ лъэпкъым и тхыдэ</a>
+                <p class="text-secondary">Нэгумэ Шорэ</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Бжьыхьэ нэпсхэр</a>
+                <p class="text-secondary">Абазэ Любэ</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Бгъащхъуэ</a>
+                <p class="text-secondary">Къардэн Бубэ</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Кӏыхьщ зауэ гъуэгур</a>
+                <p class="text-secondary">Къардэн Бубэ</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Лӏыгъэмрэ цӏыхугъэмрэ зэтӏэулъхуэныкъуэщ</a>
+                <p class="text-secondary">Елмэс Ӏэулэдин</p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Гъуэжькуий</a>
+                <p class="text-secondary">Журт Биберт</p>
+            </div>
+        </div>
     </div>
 {% endblock %}

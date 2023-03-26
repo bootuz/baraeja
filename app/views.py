@@ -24,7 +24,7 @@ def search(request):
         }
         return render(request, 'app/results.html', context)
     else:
-        return render(request, 'app/results.html')
+        return render(request, 'app/index.html')
 
 
 @require_GET
