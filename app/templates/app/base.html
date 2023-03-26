@@ -14,7 +14,7 @@
 </head>
 <body class="d-flex flex-column min-vh-100">
 <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between px-5 py-3">
-    <div class="col-md-3 mb-2 mb-md-0">
+    <div class="col-md-2 mb-2 mb-md-0">
         <a href="/" class="d-inline-flex fs-4 link-body-emphasis text-decoration-none">
             Бэрэеджэ
         </a>
@@ -26,13 +26,13 @@
         <li><a href="#" class="nav-link px-2">Тхакӏуэхэр</a></li>
     </ul>
 
-    <div class="col-md-3 text-end">
-        <a href="" class="link-body-emphasis text-decoration-none">
-            <i class="bi bi-facebook px-2 text-primary"></i>
-        </a>
-        <a href="" class="link-body-emphasis text-decoration-none">
-            <i class="bi bi-instagram"></i>
-        </a>
+    <div class="col-md-2 text-end">
+        <form class="d-flex" method="get" action="{% url 'books:search' %}">
+            <div class="input-group">
+                <input name="q" type="search" id="header-searchbar" class="form-control shadow-none" placeholder="Лъыхъуэн" aria-label="Recipient's username" aria-describedby="search-button" autocomplete="off">
+                <button class="btn" type="submit" id="search-button"><i class="bi-search"></i></button>
+            </div>
+        </form>
     </div>
 </header>
 <section>
