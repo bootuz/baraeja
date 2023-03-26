@@ -10,10 +10,10 @@
     border-radius: 0;
     border-bottom-width: 2px;
     padding-left: 0;
+    border-color: #0275d8;
 }
 #searchbar:focus {
     outline: none;
-    border-color: #0275d8;
 }
 
 #search-button {
@@ -27,4 +27,16 @@
 }
 #searchbar::placeholder {
     color: darkgray;
+    font-weight: 250;
+}
+
+.col-md-4 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#new-books {
+    max-width: 660px;
+    margin-top: 40px;
 }
