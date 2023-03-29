@@ -17,7 +17,7 @@ jobs:
         python-version: "3.11"
     - name: Install Dependencies
       run: |
-        ./build.sh
+        pip install requirements.txt
     - name: Run linter
       run: |
         flake8
