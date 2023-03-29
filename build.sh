@@ -2,6 +2,7 @@
 # exit on error
 set -o errexit
 
+pip install poetry
 poetry run pip install --upgrade pip
 poetry install
 python manage.py collectstatic --no-input
