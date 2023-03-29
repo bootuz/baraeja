@@ -3,8 +3,7 @@
 set -o errexit
 
 pip install poetry
-poetry shell
-poetry run pip install --upgrade pip
-poetry install
-python manage.py collectstatic --no-input
-python manage.py migrate
+python -m pip install --upgrade pip poetry
+python -m poetry install
+poetry run python manage.py collectstatic --no-input
+poetry run python manage.py migrate
