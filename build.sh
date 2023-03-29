@@ -3,6 +3,7 @@
 set -o errexit
 
 pip install poetry
+poetry config virtualenvs.in-project true
 poetry run pip install --upgrade pip
 poetry install
 python manage.py collectstatic --no-input
