@@ -25,11 +25,14 @@ def get_book(request: WSGIRequest, slug: str):
     }
     return render(request, 'app/book.html', context)
 
+
 @require_GET
 def search(request: WSGIRequest):
     if query := request.GET['q']:
         query = replace_chars(query)
-        results = Book.objects.filter(Q(title__icontains=query) | Q(authors__name__icontains=query)).distinct()
+        results = Book.objects.filter(
+            Q(title__icontains=query) | Q(authors__name__icontains=query)
+        ).distinct()
 
         context = {
             'q': query,
@@ -45,7 +48,6 @@ def search(request: WSGIRequest):
 def get_all_books(request: WSGIRequest):
     books = Book.objects.all()
     return HttpResponse(books)
-
 
 
 @require_GET

@@ -104,4 +104,3 @@ class Book(models.Model):
     def increment_view_count(self):
         self.views_count += 1
         self.save()
-
