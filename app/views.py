@@ -1,17 +1,21 @@
 from django.core.handlers.wsgi import WSGIRequest
-from django.core.paginator import Paginator
 from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
 
 from app.models import Book, Author
-from app.utils import replace_chars
+from app.utils import replace_chars_in_query, create_paginator
 
 
 @require_GET
 def index(request: WSGIRequest):
-    return render(request, 'app/index.html')
+    # TODO: do not forget to add this into the template
+    new_books_list = Book.objects.order_by('-created_at')[:9]
+
+    context = {
+        "new_books_list": new_books_list
+    }
+    return render(request, 'app/index.html', context)
 
 
 @require_GET
@@ -30,7 +34,7 @@ def get_book(request: WSGIRequest, slug: str):
 @require_GET
 def search(request: WSGIRequest):
     if query := request.GET['q']:
-        query = replace_chars(query)
+        query = replace_chars_in_query(query)
         results = Book.objects.filter(
             Q(title__icontains=query) | Q(authors__name__icontains=query)
         ).distinct()
@@ -38,7 +42,6 @@ def search(request: WSGIRequest):
         context = {
             'q': query,
             'results': results,
-            'count': len(results),
         }
         return render(request, 'app/results.html', context)
     else:
@@ -47,13 +50,10 @@ def search(request: WSGIRequest):
 
 @require_GET
 def get_all_books(request: WSGIRequest):
-    books = Book.objects.all()
-    paginator = Paginator(books, 30)
-
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    books_list = Book.objects.all()
+    page_obj = create_paginator(books_list, request)
     context = {
-        "books": books,
+        "books_list": books_list,
         "page_obj": page_obj
     }
     return render(request, 'app/books.html', context)
@@ -61,12 +61,22 @@ def get_all_books(request: WSGIRequest):
 
 @require_GET
 def get_all_authors(request: WSGIRequest):
-    authors = Author.objects.all()
-    print(type(authors))
-    return HttpResponse(authors)
+    authors_list = Author.objects.all()
+    page_obj = create_paginator(authors_list, request)
+    context = {
+        "authors_list": authors_list,
+        "page_obj": page_obj
+    }
+    return render(request, 'app/authors.html', context)
 
 
 @require_GET
 def get_author(request: WSGIRequest, slug: str):
     author = get_object_or_404(Author, slug=slug)
-    return HttpResponse(author)
+    books_list = author.books.all()
+    page_obj = create_paginator(books_list, request)
+    context = {
+        "author": author,
+        "page_obj": page_obj
+    }
+    return render(request, 'app/author.html', context)
