@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.views.decorators.http import require_GET
 
-from app.models import Book, Author, Category
+from app.models import Book, Author
 from app.utils import replace_chars
 
 
