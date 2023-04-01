@@ -1,4 +1,5 @@
 from django.core.handlers.wsgi import WSGIRequest
+from django.core.paginator import Paginator
 from django.db.models import Q
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
@@ -47,13 +48,21 @@ def search(request: WSGIRequest):
 @require_GET
 def get_all_books(request: WSGIRequest):
     books = Book.objects.all()
-    return HttpResponse(books)
+    paginator = Paginator(books, 30)
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        "books": books,
+        "page_obj": page_obj
+    }
+    return render(request, 'app/books.html', context)
 
 
 @require_GET
 def get_all_authors(request: WSGIRequest):
     authors = Author.objects.all()
-    print(type(request))
+    print(type(authors))
     return HttpResponse(authors)
 
 
