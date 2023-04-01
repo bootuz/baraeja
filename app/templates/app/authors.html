@@ -1,0 +1,216 @@
+{% extends 'app/base.html' %}
+
+{% block title %}
+    Ди тхакӏуэхэр
+{% endblock %}
+
+{% block main %}
+    <div class="container col-md-7">
+        <div class="d-flex mt-3 align-items-center">
+            <h3 class="text-body-secondary fw-light">Тхакӏуэхэр</h3>
+        </div>
+        <div class="row px-0 pt-3 fw-light">
+            {% for author in authors_list %}
+                <div class="col-md-4">
+                    <a class="text-decoration-none" href="{% url 'books:get_books_of_author' slug=author.slug %}">{{ author.name }}</a>
+                    <p class="text-secondary">
+                        Тхылъу диӏэр: {{ author.books.count }}
+                    </p>
+                </div>
+            {% endfor %}
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+            <div class="col-md-4">
+                <a class="text-decoration-none" href="#">Тхак1уэм иц1эр</a>
+                <p class="text-secondary">
+                    Тхылъу диӏэр: 10
+                </p>
+            </div>
+        </div>
+        {% if authors_list.count > 30 %}
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center mt-5 pb-3">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                    {% endif %}
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <li class="page-item active"><a class="page-link" href="#">{{ num }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        {% endif %}
+    </div>
+{% endblock %}

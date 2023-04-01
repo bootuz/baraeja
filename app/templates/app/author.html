@@ -1,27 +1,30 @@
 {% extends 'app/base.html' %}
 {% block title %}
-{{ q }}
+    {{ author.name }}
 {% endblock %}
 
 {% block main %}
     <div class="container col-md-7">
         <div class="d-flex mt-3 align-items-center">
-            <h3 class="text-body-secondary fw-light">
-                {% if results.count == 0 %}
-                    Зыри дгъуэтакъым
-                {% else %}
-                    Къэдгъуэтар: {{ results.count }}
-                {% endif %}
-            </h3>
+            <h3 class="text-body-secondary fw-light">{{ author.name }} и тхылъхэр</h3>
         </div>
         <div class="row px-0 pt-3 fw-light">
-            {% for result in results.all %}
+            {% for book in author.books.all %}
                 <div class="col-md-4">
-                    <a class="text-decoration-none" href="{% url 'books:get_book' slug=result.slug %}">{{ result.title }}</a>
+                    <a class="text-decoration-none" href="{% url 'books:get_book' slug=book.slug %}">{{ book.title }}</a>
+{#                    <p class="text-secondary">#}
+{#                        {% for author in book.authors.all %}#}
+{#                            {% if forloop.counter == book.authors.all.count %}#}
+{#                                {{ author.name }}#}
+{#                            {% else %}#}
+{#                                {{ author.name }},#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                    </p>#}
                 </div>
             {% endfor %}
         </div>
-        {% if results.count > 30 %}
+        {% if author.books.count > 30 %}
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center mt-5 pb-3">
                     {% if page_obj.has_previous %}
