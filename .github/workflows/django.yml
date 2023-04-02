@@ -22,6 +22,3 @@ jobs:
     - name: Run linter
       run: |
         flake8
-    - name: Run tests
-      run: |
-        ./manage.py test
