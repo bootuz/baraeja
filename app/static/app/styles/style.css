@@ -9,10 +9,10 @@
     border-radius: 0;
     border-bottom-width: 2px;
     padding-left: 0;
-    border-color: #0275d8;
 }
 #header-searchbar:focus {
     outline: none;
+    border-color: #0275d8;
 }
 
 #header-searchbar::placeholder {
