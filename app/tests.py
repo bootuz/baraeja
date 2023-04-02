@@ -2,4 +2,5 @@ from django.test import TestCase
 
 
 class Test(TestCase):
-    pass
+    def test_test(self):
+        assert 1 == 1
