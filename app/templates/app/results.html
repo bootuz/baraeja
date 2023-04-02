@@ -1,6 +1,6 @@
 {% extends 'app/base.html' %}
 {% block title %}
-{{ q }}
+    {{ q }}
 {% endblock %}
 
 {% block main %}
@@ -10,7 +10,7 @@
                 {% if results.count == 0 %}
                     Зыри дгъуэтакъым
                 {% else %}
-                    Къэдгъуэтар: {{ results.count }}
+                    Тхылъу къэдгъуэтар: {{ results.count }}
                 {% endif %}
             </h3>
         </div>
