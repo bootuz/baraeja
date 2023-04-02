@@ -33,6 +33,9 @@ RENDER_EXTERNAL_HOSTNAME = os.getenv('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
+if 'RENDER' not in os.environ:
+    ALLOWED_HOSTS.append('*')
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -78,21 +81,24 @@ WSGI_APPLICATION = 'baraeja.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
-DATABASES = {
-    'default': config(
-        default=os.getenv("DATABASE_URL"),
-        conn_max_age=600,
-        test_options={"NAME": "staging"}
-    )
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+if 'RENDER' in os.environ:
+    DATABASES = {
+        'default': config(
+            default=os.getenv("DATABASE_URL"),
+            conn_max_age=600,
+            test_options={"NAME": "staging"}
+        )
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+            'TEST': {
+                'NAME': 'test.sqlite3'
+            }
+        }
+    }
 
 
 # Password validation
