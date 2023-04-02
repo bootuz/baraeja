@@ -15,7 +15,7 @@ from pathlib import Path
 from dj_database_url import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,16 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY", default="local_secret")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = "RENDER" not in os.environ
+DEBUG = False
 
-ALLOWED_HOSTS = ["baraeja.com"]
+ALLOWED_HOSTS = ["*"]
 
-RENDER_EXTERNAL_HOSTNAME = os.getenv("RENDER_EXTERNAL_HOSTNAME")
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
-if "RENDER" not in os.environ:
-    ALLOWED_HOSTS.append("*")
 
 # Application definition
 INSTALLED_APPS = [
@@ -82,24 +76,14 @@ WSGI_APPLICATION = "baraeja.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-if "RENDER" in os.environ:
-    if os.getenv("IS_PULL_REQUEST") == "true":
-        DATABASES = {
-            "default": config(default=os.getenv("STAGING_DB"), conn_max_age=600)
-        }
-    else:
-        DATABASES = {
-            "default": config(default=os.getenv("DATABASE_URL"), conn_max_age=600)
-        }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "db.sqlite3",
-            "TEST": {"NAME": "test.sqlite3"},
-        }
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+        "TEST": {"NAME": "test.sqlite3"},
     }
-print(DATABASES["default"])
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -140,15 +124,7 @@ DATE_INPUT_FORMATS = ["%d-%m-%Y"]
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-
-if not DEBUG:
-    # Tell Django to copy statics to the `staticfiles` directory
-    # in your application directory on Render.
-    STATIC_ROOT = BASE_DIR / "staticfiles"
-
-    # Turn on WhiteNoise storage backend that takes care of compressing static files
-    # and creating unique names for each version so they can safely be cached forever.
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 # Media Files
 MEDIA_URL = "media/"

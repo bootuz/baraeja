@@ -9,6 +9,6 @@ exclude =
     .env,
     */migrations/*
 
-
+ignore = F401, F403
 max-line-length = 110
 per-file-ignores = **/__init__.py:D104
