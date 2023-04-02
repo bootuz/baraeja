@@ -1,9 +1,4 @@
 databases:
-  - name: staging
-    databaseName: staging
-    user: staging
-    plan: free
-    region: frankfurt
   - name: baraeja
     databaseName: baraeja
     user: baraeja
