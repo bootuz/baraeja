@@ -85,7 +85,7 @@ WSGI_APPLICATION = "baraeja.wsgi.application"
 if "RENDER" in os.environ:
     if os.getenv("IS_PULL_REQUEST"):
         DATABASES = {
-            "default": config(default=os.getenv("DATABASE_URL"), conn_max_age=600)
+            "default": config(default=os.getenv("STAGING_DB"), conn_max_age=600)
         }
     else:
         DATABASES = {
