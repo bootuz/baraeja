@@ -24,9 +24,6 @@ jobs:
     - name: Migrate DB
       run: |
         python manage.py migrate
-    - name: Run linter
-      run: |
-        flake8
     - name: Run tests
       run: |
         python manage.py test

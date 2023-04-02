@@ -1,0 +1,16 @@
+name: Linter
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  setup:
+    uses: ./.github/workflows/base.yml
+  linter:
+    steps:
+      - name: Run linter
+        run: |
+          flake8
