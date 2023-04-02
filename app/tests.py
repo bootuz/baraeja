@@ -10,6 +10,7 @@ def generate_random_string(length: int):
     letters = string.ascii_letters + string.digits + string.punctuation
     return ''.join(random.choice(letters) for _ in range(length))
 
+
 class Test(TestCase):
     def test_category(self):
         title = generate_random_string(10)
