@@ -1,0 +1,22 @@
+databases:
+  - name: baraeja
+    databaseName: baraeja
+    user: baraeja
+    region: frankfurt
+
+services:
+  - type: web
+    name: baraeja
+    region: frankfurt
+    env: python
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn baraeja.wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: baraeja
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4
