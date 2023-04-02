@@ -23,6 +23,10 @@ services:
         fromDatabase:
           name: baraeja
           property: connectionString
+      - key: STAGING_DB
+        fromDatabase:
+          name: staging
+          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY

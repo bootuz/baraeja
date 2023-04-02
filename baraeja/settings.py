@@ -83,9 +83,9 @@ WSGI_APPLICATION = "baraeja.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 if "RENDER" in os.environ:
-    if os.getenv("IS_PULL_REQUEST"):
+    if os.getenv("IS_PULL_REQUEST") == "true":
         DATABASES = {
-            "default": config(default=os.getenv("DATABASE_URL"), conn_max_age=600)
+            "default": config(default=os.getenv("STAGING_DB"), conn_max_age=600)
         }
     else:
         DATABASES = {
@@ -99,7 +99,7 @@ else:
             "TEST": {"NAME": "test.sqlite3"},
         }
     }
-
+print(DATABASES["default"])
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
