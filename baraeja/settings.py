@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
-import dj_database_url
+from dj_database_url import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,12 +80,12 @@ WSGI_APPLICATION = 'baraeja.wsgi.application'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
-        conn_max_age=600
+    'default': config(
+        default=os.getenv("DATABASE_URL"),
+        conn_max_age=600,
+        test_options={"NAME": "staging"}
     )
 }
-
 
 # DATABASES = {
 #     'default': {
