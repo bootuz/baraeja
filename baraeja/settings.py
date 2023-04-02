@@ -82,6 +82,7 @@ WSGI_APPLICATION = "baraeja.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+print(os.getenv("IS_PULL_REQUEST"))
 if "RENDER" in os.environ:
     if os.getenv("IS_PULL_REQUEST"):
         DATABASES = {
