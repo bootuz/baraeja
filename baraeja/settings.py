@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'baraeja.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default="",
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=600
     )
 }
