@@ -7,9 +7,8 @@ on:
     branches: [ "main" ]
 
 jobs:
-  setup:
-    uses: ./.github/workflows/base.yml
   linter:
+    uses: ./.github/workflows/base.yml
     steps:
       - name: Run linter
         run: |
