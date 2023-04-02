@@ -5,53 +5,68 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0001_initial'),
+        ("app", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='book',
-            name='author',
+            model_name="book",
+            name="author",
         ),
         migrations.RemoveField(
-            model_name='book',
-            name='category',
+            model_name="book",
+            name="category",
         ),
         migrations.RemoveField(
-            model_name='book',
-            name='publisher',
+            model_name="book",
+            name="publisher",
         ),
         migrations.AddField(
-            model_name='book',
-            name='authors',
-            field=models.ManyToManyField(blank=True, related_name='books', to='app.author', verbose_name='Author'),
+            model_name="book",
+            name="authors",
+            field=models.ManyToManyField(
+                blank=True, related_name="books", to="app.author", verbose_name="Author"
+            ),
         ),
         migrations.AddField(
-            model_name='book',
-            name='categories',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='books', to='app.category', verbose_name='Genre'),
+            model_name="book",
+            name="categories",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="books",
+                to="app.category",
+                verbose_name="Genre",
+            ),
         ),
         migrations.AddField(
-            model_name='book',
-            name='publishers',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='books', to='app.publisher', verbose_name='Publisher'),
+            model_name="book",
+            name="publishers",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="books",
+                to="app.publisher",
+                verbose_name="Publisher",
+            ),
         ),
         migrations.AlterModelTable(
-            name='author',
-            table='author',
+            name="author",
+            table="author",
         ),
         migrations.AlterModelTable(
-            name='book',
-            table='book',
+            name="book",
+            table="book",
         ),
         migrations.AlterModelTable(
-            name='category',
-            table='category',
+            name="category",
+            table="category",
         ),
         migrations.AlterModelTable(
-            name='publisher',
-            table='publisher',
+            name="publisher",
+            table="publisher",
         ),
     ]

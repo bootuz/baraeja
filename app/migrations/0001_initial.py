@@ -5,85 +5,181 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Author',
+            name="Author",
             fields=[
-                ('id', models.UUIDField(primary_key=True, serialize=False)),
-                ('name', models.CharField(max_length=100, verbose_name="Author's name")),
-                ('slug', models.SlugField(max_length=100, unique=True, verbose_name='URL')),
-                ('photo', models.FileField(blank=True, null=True, upload_to='author_photos', verbose_name='Photo')),
-                ('bio', models.TextField(blank=True, default='', verbose_name='BIO')),
-                ('born_year', models.IntegerField(verbose_name='Born year')),
-                ('death_year', models.IntegerField(blank=True, null=True, verbose_name='Death year')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
+                ("id", models.UUIDField(primary_key=True, serialize=False)),
+                (
+                    "name",
+                    models.CharField(max_length=100, verbose_name="Author's name"),
+                ),
+                (
+                    "slug",
+                    models.SlugField(max_length=100, unique=True, verbose_name="URL"),
+                ),
+                (
+                    "photo",
+                    models.FileField(
+                        blank=True,
+                        null=True,
+                        upload_to="author_photos",
+                        verbose_name="Photo",
+                    ),
+                ),
+                ("bio", models.TextField(blank=True, default="", verbose_name="BIO")),
+                ("born_year", models.IntegerField(verbose_name="Born year")),
+                (
+                    "death_year",
+                    models.IntegerField(
+                        blank=True, null=True, verbose_name="Death year"
+                    ),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
             ],
             options={
-                'verbose_name': 'Author',
-                'verbose_name_plural': 'Authors',
-                'ordering': ['name'],
+                "verbose_name": "Author",
+                "verbose_name_plural": "Authors",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.UUIDField(primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=100, verbose_name='Genre')),
-                ('slug', models.SlugField(max_length=100, unique=True, verbose_name='URL')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                ("id", models.UUIDField(primary_key=True, serialize=False)),
+                ("title", models.CharField(max_length=100, verbose_name="Genre")),
+                (
+                    "slug",
+                    models.SlugField(max_length=100, unique=True, verbose_name="URL"),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Genre',
-                'verbose_name_plural': 'Genres',
-                'ordering': ['title'],
+                "verbose_name": "Genre",
+                "verbose_name_plural": "Genres",
+                "ordering": ["title"],
             },
         ),
         migrations.CreateModel(
-            name='Publisher',
+            name="Publisher",
             fields=[
-                ('id', models.UUIDField(primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=200, verbose_name='Publisher')),
-                ('slug', models.SlugField(max_length=200, unique=True, verbose_name='URL')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
+                ("id", models.UUIDField(primary_key=True, serialize=False)),
+                ("title", models.CharField(max_length=200, verbose_name="Publisher")),
+                (
+                    "slug",
+                    models.SlugField(max_length=200, unique=True, verbose_name="URL"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
             ],
             options={
-                'verbose_name': 'Publisher',
-                'verbose_name_plural': 'Publishers',
-                'ordering': ['title'],
+                "verbose_name": "Publisher",
+                "verbose_name_plural": "Publishers",
+                "ordering": ["title"],
             },
         ),
         migrations.CreateModel(
-            name='Book',
+            name="Book",
             fields=[
-                ('id', models.UUIDField(primary_key=True, serialize=False)),
-                ('title', models.CharField(max_length=150, verbose_name='Book title')),
-                ('slug', models.SlugField(max_length=100, unique=True, verbose_name='URL')),
-                ('cover', models.FileField(blank=True, null=True, upload_to='covers/', verbose_name='Cover')),
-                ('epub', models.FileField(blank=True, null=True, upload_to='epubs/', verbose_name='EPUB')),
-                ('pdf', models.FileField(blank=True, null=True, upload_to='pdfs/', verbose_name='PDF')),
-                ('isbn', models.CharField(blank=True, max_length=100, null=True, verbose_name='ISBN')),
-                ('annotation', models.TextField(blank=True, null=True, verbose_name='Annotation')),
-                ('published_at', models.DateField(blank=True, verbose_name='Published at')),
-                ('views_count', models.IntegerField(default=0, verbose_name='Views count')),
-                ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
-                ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
-                ('author', models.ManyToManyField(blank=True, to='app.author', verbose_name='Author')),
-                ('category', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='app.category', verbose_name='Genre')),
-                ('publisher', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='app.publisher', verbose_name='Publisher')),
+                ("id", models.UUIDField(primary_key=True, serialize=False)),
+                ("title", models.CharField(max_length=150, verbose_name="Book title")),
+                (
+                    "slug",
+                    models.SlugField(max_length=100, unique=True, verbose_name="URL"),
+                ),
+                (
+                    "cover",
+                    models.FileField(
+                        blank=True, null=True, upload_to="covers/", verbose_name="Cover"
+                    ),
+                ),
+                (
+                    "epub",
+                    models.FileField(
+                        blank=True, null=True, upload_to="epubs/", verbose_name="EPUB"
+                    ),
+                ),
+                (
+                    "pdf",
+                    models.FileField(
+                        blank=True, null=True, upload_to="pdfs/", verbose_name="PDF"
+                    ),
+                ),
+                (
+                    "isbn",
+                    models.CharField(
+                        blank=True, max_length=100, null=True, verbose_name="ISBN"
+                    ),
+                ),
+                (
+                    "annotation",
+                    models.TextField(blank=True, null=True, verbose_name="Annotation"),
+                ),
+                (
+                    "published_at",
+                    models.DateField(blank=True, verbose_name="Published at"),
+                ),
+                (
+                    "views_count",
+                    models.IntegerField(default=0, verbose_name="Views count"),
+                ),
+                (
+                    "created_at",
+                    models.DateTimeField(auto_now_add=True, verbose_name="Created at"),
+                ),
+                (
+                    "updated_at",
+                    models.DateTimeField(auto_now=True, verbose_name="Updated at"),
+                ),
+                (
+                    "author",
+                    models.ManyToManyField(
+                        blank=True, to="app.author", verbose_name="Author"
+                    ),
+                ),
+                (
+                    "category",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app.category",
+                        verbose_name="Genre",
+                    ),
+                ),
+                (
+                    "publisher",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="app.publisher",
+                        verbose_name="Publisher",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Book',
-                'verbose_name_plural': 'Books',
-                'ordering': ['-created_at'],
+                "verbose_name": "Book",
+                "verbose_name_plural": "Books",
+                "ordering": ["-created_at"],
             },
         ),
     ]

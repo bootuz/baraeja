@@ -11,3 +11,4 @@ exclude =
 
 
 max-line-length = 110
+per-file-ignores = **/__init__.py:D104

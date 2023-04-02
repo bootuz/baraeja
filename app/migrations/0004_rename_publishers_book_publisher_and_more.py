@@ -5,29 +5,35 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0003_alter_author_id_alter_book_id_alter_category_id_and_more'),
+        ("app", "0003_alter_author_id_alter_book_id_alter_category_id_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='book',
-            old_name='publishers',
-            new_name='publisher',
+            model_name="book",
+            old_name="publishers",
+            new_name="publisher",
         ),
         migrations.RemoveField(
-            model_name='book',
-            name='categories',
+            model_name="book",
+            name="categories",
         ),
         migrations.AddField(
-            model_name='book',
-            name='categoriy',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='books', to='app.category', verbose_name='Category'),
+            model_name="book",
+            name="categoriy",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="books",
+                to="app.category",
+                verbose_name="Category",
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='published_at',
-            field=models.DateField(verbose_name='Published at'),
+            model_name="book",
+            name="published_at",
+            field=models.DateField(verbose_name="Published at"),
         ),
     ]
