@@ -84,7 +84,7 @@ WSGI_APPLICATION = "baraeja.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 if "RENDER" in os.environ:
     if os.getenv("IS_PULL_REQUEST") == "true":
-        print("test")
+        print("test estsfsadkjgfhsja gksjadhgf kjasdfgh")
         DATABASES = {
             "default": config(default=os.getenv("STAGING_DB"), conn_max_age=600)
         }
