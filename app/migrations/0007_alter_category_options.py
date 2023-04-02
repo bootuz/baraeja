@@ -4,14 +4,17 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0006_alter_author_name_alter_book_authors_and_more'),
+        ("app", "0006_alter_author_name_alter_book_authors_and_more"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='category',
-            options={'ordering': ['title'], 'verbose_name': 'Category', 'verbose_name_plural': 'Categories'},
+            name="category",
+            options={
+                "ordering": ["title"],
+                "verbose_name": "Category",
+                "verbose_name_plural": "Categories",
+            },
         ),
     ]

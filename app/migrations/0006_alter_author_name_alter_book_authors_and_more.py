@@ -4,35 +4,36 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('app', '0005_rename_categoriy_book_category'),
+        ("app", "0005_rename_categoriy_book_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='author',
-            name='name',
-            field=models.CharField(max_length=100, verbose_name='Name'),
+            model_name="author",
+            name="name",
+            field=models.CharField(max_length=100, verbose_name="Name"),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='authors',
-            field=models.ManyToManyField(related_name='books', to='app.author', verbose_name='Author'),
+            model_name="book",
+            name="authors",
+            field=models.ManyToManyField(
+                related_name="books", to="app.author", verbose_name="Author"
+            ),
         ),
         migrations.AlterField(
-            model_name='book',
-            name='title',
-            field=models.CharField(max_length=150, verbose_name='Title'),
+            model_name="book",
+            name="title",
+            field=models.CharField(max_length=150, verbose_name="Title"),
         ),
         migrations.AlterField(
-            model_name='category',
-            name='title',
-            field=models.CharField(max_length=100, verbose_name='Title'),
+            model_name="category",
+            name="title",
+            field=models.CharField(max_length=100, verbose_name="Title"),
         ),
         migrations.AlterField(
-            model_name='publisher',
-            name='title',
-            field=models.CharField(max_length=200, verbose_name='Title'),
+            model_name="publisher",
+            name="title",
+            field=models.CharField(max_length=200, verbose_name="Title"),
         ),
     ]

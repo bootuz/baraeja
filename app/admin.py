@@ -4,24 +4,24 @@ from app.models import Book, Author, Category, Publisher
 
 
 class BookAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
-    autocomplete_fields = ['category', 'publisher']
-    filter_horizontal = ['authors']
+    prepopulated_fields = {"slug": ("title",)}
+    autocomplete_fields = ["category", "publisher"]
+    filter_horizontal = ["authors"]
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
-    search_fields = ['title']
+    prepopulated_fields = {"slug": ("title",)}
+    search_fields = ["title"]
 
 
 class PublisherAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
-    search_fields = ['title']
+    prepopulated_fields = {"slug": ("title",)}
+    search_fields = ["title"]
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('name',)}
-    search_fields = ['name']
+    prepopulated_fields = {"slug": ("name",)}
+    search_fields = ["name"]
 
 
 admin.site.register(Book, BookAdmin)

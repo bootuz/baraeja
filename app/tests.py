@@ -8,7 +8,7 @@ from app.models import Category
 
 def generate_random_string(length: int):
     letters = string.ascii_letters + string.digits + string.punctuation
-    return ''.join(random.choice(letters) for _ in range(length))
+    return "".join(random.choice(letters) for _ in range(length))
 
 
 class Test(TestCase):
