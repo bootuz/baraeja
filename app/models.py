@@ -116,3 +116,12 @@ class Book(models.Model):
     def increment_view_count(self):
         self.views_count += 1
         self.save()
+
+
+class SocialMedia(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    icon_name = models.CharField(max_length=100, verbose_name="Icon name")
+    url = models.URLField(max_length=100, verbose_name="URL", unique=True)
+
+    def __str__(self):
+        return self.icon_name
