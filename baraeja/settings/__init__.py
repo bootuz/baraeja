@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-if os.getenv("LOCAL"):
-    from .local import *
-else:
+if "RENDER" in os.environ:
     from .prod import *
+else:
+    from .local import *
