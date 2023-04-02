@@ -8,7 +8,9 @@ on:
 
 jobs:
   linter:
-    uses: ./.github/workflows/base.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/workflows/base.yml
       - name: Run linter
         run: |
           flake8

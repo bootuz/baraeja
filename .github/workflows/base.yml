@@ -3,10 +3,9 @@ name: Base action
 on:
   workflow_call:
 
-jobs:
-  setup-environment:
-    runs-on: ubuntu-latest
-    steps:
+runs:
+  using: "composite"
+  steps:
     - uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v3
