@@ -8,7 +8,6 @@ on:
 
 jobs:
   linter:
-    runs-on: ubuntu-latest
     steps:
       - uses: ./.github/workflows/base.yml
       - name: Run linter
