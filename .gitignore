@@ -4,4 +4,4 @@ __pycache__/
 *.py[cod]
 *$py.class
 .env
-baraeja/settings/local.py
+baraeja/settings/dev.py

@@ -9,4 +9,4 @@ if "RENDER" in os.environ:
 elif "GITHUB" in os.environ:
     from .github import *
 else:
-    from .local import *
+    from .dev import *
