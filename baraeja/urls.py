@@ -20,3 +20,6 @@ urlpatterns = [
     path("", include("app.urls")),
     path("admin/", admin.site.urls),
 ]
+
+admin.site.site_header = "Baraeja administration"
+admin.site.site_title = "App"
