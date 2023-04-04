@@ -69,5 +69,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
         integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i"
         crossorigin="anonymous"></script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyDKZSDzC2frhH7blhAkZLORY-Wb5YZM-Y4",
+        authDomain: "baraeja-e15cc.firebaseapp.com",
+        projectId: "baraeja-e15cc",
+        storageBucket: "baraeja-e15cc.appspot.com",
+        messagingSenderId: "934800794409",
+        appId: "1:934800794409:web:a8c595dd404a65fbfacd38",
+        measurementId: "G-QTES00ZRJC"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
 </body>
 </html>
