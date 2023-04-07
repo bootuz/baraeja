@@ -22,4 +22,3 @@ urlpatterns = [
 ]
 
 admin.site.site_header = "Baraeja administration"
-admin.site.site_title = "App"
