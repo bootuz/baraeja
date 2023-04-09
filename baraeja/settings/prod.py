@@ -144,11 +144,6 @@ MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
 DEFAULT_MEDIA_STORAGE = "baraeja.storages.PublicMediaStorage"
 
 
-# Media Files
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "mediafiles/"
-
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
