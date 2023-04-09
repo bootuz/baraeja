@@ -1,6 +1,8 @@
+from django.conf.urls.static import static
 from django.urls import path
 
 from app import views
+from baraeja import settings
 
 app_name = "books"
 urlpatterns = [
@@ -11,3 +13,7 @@ urlpatterns = [
     path("books/<slug:slug>/", views.get_book, name="get_book"),
     path("authors/<slug:slug>/", views.get_author, name="get_books_of_author"),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
