@@ -4,6 +4,10 @@ from django.db import models
 from django.urls import reverse
 
 
+def user_directory_path(instance, filename):
+    return f"books/{instance.slug}/{filename}"
+
+
 class Author(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, verbose_name="Name")
@@ -69,12 +73,14 @@ class Book(models.Model):
     title = models.CharField(max_length=150, verbose_name="Title")
     slug = models.SlugField(unique=True, max_length=100, verbose_name="URL")
     cover = models.FileField(
-        upload_to="covers/", null=True, blank=True, verbose_name="Cover"
+        upload_to=user_directory_path, null=True, blank=True, verbose_name="Cover"
     )
     epub = models.FileField(
-        upload_to="epubs/", null=True, blank=True, verbose_name="EPUB"
+        upload_to=user_directory_path, null=True, blank=True, verbose_name="EPUB"
     )
-    pdf = models.FileField(upload_to="pdfs/", null=True, blank=True, verbose_name="PDF")
+    pdf = models.FileField(
+        upload_to=user_directory_path, null=True, blank=True, verbose_name="PDF"
+    )
     isbn = models.CharField(max_length=100, null=True, blank=True, verbose_name="ISBN")
     annotation = models.TextField(null=True, blank=True, verbose_name="Annotation")
     published_at = models.DateField(verbose_name="Published at")
