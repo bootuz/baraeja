@@ -15,7 +15,7 @@ from pathlib import Path
 from dj_database_url import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -141,7 +141,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 # s3 public media settings
 PUBLIC_MEDIA_LOCATION = "media"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
-DEFAULT_MEDIA_STORAGE = "baraeja.storages.PublicMediaStorage"
+DEFAULT_MEDIA_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
 
 
 # Default primary key field type
