@@ -4,8 +4,16 @@ from django.db import models
 from django.urls import reverse
 
 
-def user_directory_path(instance, filename):
-    return f"books/{instance.slug}/{filename}"
+def _directory(root, slug, filename):
+    return f"{root}/{slug}/{filename}"
+
+
+def book_directory(instance, filename):
+    return _directory("books", instance.slug, filename)
+
+
+def author_directory(instance, filename):
+    return _directory("authors", instance.slug, filename)
 
 
 class Author(models.Model):
@@ -13,7 +21,7 @@ class Author(models.Model):
     name = models.CharField(max_length=100, verbose_name="Name")
     slug = models.SlugField(max_length=100, verbose_name="URL", unique=True)
     photo = models.FileField(
-        upload_to="author_photos", null=True, blank=True, verbose_name="Photo"
+        upload_to=author_directory, null=True, blank=True, verbose_name="Photo"
     )
     bio = models.TextField(default="", blank=True, verbose_name="BIO")
     born_year = models.IntegerField(verbose_name="Born year")
@@ -69,19 +77,33 @@ class Publisher(models.Model):
 
 
 class Book(models.Model):
+    WESTERN = "KӀАХЭ"
+    EASTERN = "ЩХЬАГЪ"
+    LANGUAGES = [
+        (WESTERN, "Адыгабзэ"),
+        (EASTERN, "Адыгэбзэ"),
+    ]
+
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     title = models.CharField(max_length=150, verbose_name="Title")
     slug = models.SlugField(unique=True, max_length=100, verbose_name="URL")
     cover = models.FileField(
-        upload_to=user_directory_path, null=True, blank=True, verbose_name="Cover"
+        upload_to=book_directory, null=True, blank=True, verbose_name="Cover"
     )
     epub = models.FileField(
-        upload_to=user_directory_path, null=True, blank=True, verbose_name="EPUB"
+        upload_to=book_directory, null=True, blank=True, verbose_name="EPUB"
     )
     pdf = models.FileField(
-        upload_to=user_directory_path, null=True, blank=True, verbose_name="PDF"
+        upload_to=book_directory, null=True, blank=True, verbose_name="PDF"
     )
-    isbn = models.CharField(max_length=100, null=True, blank=True, verbose_name="ISBN")
+    language = models.CharField(
+        choices=LANGUAGES,
+        max_length=20,
+        blank=True,
+        default="",
+        verbose_name="Language",
+    )
+    isbn = models.CharField(max_length=100, blank=True, default="", verbose_name="ISBN")
     annotation = models.TextField(null=True, blank=True, verbose_name="Annotation")
     published_at = models.DateField(verbose_name="Published at")
     publisher = models.ForeignKey(
@@ -89,7 +111,8 @@ class Book(models.Model):
         null=True,
         blank=True,
         related_name="books",
-        on_delete=models.CASCADE,
+        default=None,
+        on_delete=models.SET_DEFAULT,
         verbose_name="Publisher",
     )
     category = models.ForeignKey(
@@ -97,7 +120,8 @@ class Book(models.Model):
         null=True,
         blank=True,
         related_name="books",
-        on_delete=models.CASCADE,
+        default=None,
+        on_delete=models.SET_DEFAULT,
         verbose_name="Category",
     )
     authors = models.ManyToManyField(
@@ -127,7 +151,7 @@ class Book(models.Model):
 class SocialMedia(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     icon_name = models.CharField(max_length=100, verbose_name="Icon name")
-    url = models.URLField(max_length=100, verbose_name="URL", unique=True)
+    url = models.URLField(max_length=100, unique=True, verbose_name="URL")
 
     def __str__(self):
         return self.icon_name

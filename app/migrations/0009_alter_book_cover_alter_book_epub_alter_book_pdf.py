@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             field=models.FileField(
                 blank=True,
                 null=True,
-                upload_to=app.models.user_directory_path,
+                upload_to=app.models.book_directory,
                 verbose_name="Cover",
             ),
         ),
@@ -26,7 +26,7 @@ class Migration(migrations.Migration):
             field=models.FileField(
                 blank=True,
                 null=True,
-                upload_to=app.models.user_directory_path,
+                upload_to=app.models.book_directory,
                 verbose_name="EPUB",
             ),
         ),
@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             field=models.FileField(
                 blank=True,
                 null=True,
-                upload_to=app.models.user_directory_path,
+                upload_to=app.models.book_directory,
                 verbose_name="PDF",
             ),
         ),
