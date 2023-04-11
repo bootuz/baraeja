@@ -9,9 +9,7 @@ from app.utils import replace_chars_in_query, create_paginator
 
 @require_GET
 def index(request: WSGIRequest):
-    # TODO: do not forget to add this into the template
     new_books_list = Book.objects.order_by("-created_at")[:9]
-
     context = {"new_books_list": new_books_list}
     return render(request, "app/index.html", context)
 
