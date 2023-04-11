@@ -17,42 +17,12 @@
     <div id="new-books" class="container d-flex flex-column">
         <h5 class="pb-2 text-body-secondary fw-light">Тхылъыщӏэхэр</h5>
         <div class="row fw-light">
+            {% for book in new_books_list %}
             <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Аслъэн сымаджэ</a>
-                <p class="text-secondary">Тхакӏуэм и цӏэр</p>
+                <a class="text-decoration-none" href="{% url 'books:get_book' slug=book.slug %}">{{ book.title}}</a>
+                <p class="text-secondary">{{ book.authors.all|join:", " }}</p>
             </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Къру закъуэ</a>
-                <p class="text-secondary">Тхакӏуэм и цӏэр</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Мазизэ</a>
-                <p class="text-secondary">Шэджыхьэщӏэ Хьэмыщэ</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Адыгэ лъэпкъым и тхыдэ</a>
-                <p class="text-secondary">Нэгумэ Шорэ</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Бжьыхьэ нэпсхэр</a>
-                <p class="text-secondary">Абазэ Любэ</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Бгъащхъуэ</a>
-                <p class="text-secondary">Къардэн Бубэ</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Кӏыхьщ зауэ гъуэгур</a>
-                <p class="text-secondary">Къардэн Бубэ</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Лӏыгъэмрэ цӏыхугъэмрэ зэтӏэулъхуэныкъуэщ</a>
-                <p class="text-secondary">Елмэс Ӏэулэдин</p>
-            </div>
-            <div class="col-md-4">
-                <a class="text-decoration-none" href="#">Гъуэжькуий</a>
-                <p class="text-secondary">Журт Биберт</p>
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
