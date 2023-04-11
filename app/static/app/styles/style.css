@@ -59,8 +59,7 @@
     margin-top: 40px;
 }
 
-#download-buttons button {
+#download-buttons a {
     width: 90px;
-    height: 45px;
     font-weight: bold;
 }

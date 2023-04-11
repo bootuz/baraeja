@@ -12,15 +12,7 @@
             {% for book in books_list %}
                 <div class="col-md-4">
                     <a class="text-decoration-none" href="{% url 'books:get_book' slug=book.slug %}">{{ book.title }}</a>
-                    <p class="text-secondary">
-                        {% for author in book.authors.all %}
-                            {% if forloop.counter == book.authors.all.count %}
-                                {{ author.name }}
-                            {% else %}
-                                {{ author.name }},
-                            {% endif %}
-                        {% endfor %}
-                    </p>
+                    <p class="text-secondary">{{ book.authors.all|join:", " }}</p>
                 </div>
             {% endfor %}
             <div class="col-md-4">
