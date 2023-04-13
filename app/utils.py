@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.db.models import QuerySet
 
 
-def replace_chars_in_query(string, to_be_replaced="iIlL1|"):
+def replace_chars_in_query(string: str, to_be_replaced: str = "iIlL1|"):
     if string[0] in to_be_replaced:
         string = "Ӏ" + string[1:]
     for i in to_be_replaced:
