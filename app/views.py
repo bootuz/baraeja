@@ -27,7 +27,7 @@ def get_book(request: WSGIRequest, slug: str):
 
 @require_GET
 def search(request: WSGIRequest):
-    if query := request.GET["q"]:
+    if query := request.GET.get("q"):
         query = replace_chars_in_query(query)
         results = Book.objects.filter(
             Q(title__icontains=query) | Q(authors__name__icontains=query)
@@ -39,7 +39,9 @@ def search(request: WSGIRequest):
         }
         return render(request, "app/results.html", context)
     else:
-        return render(request, "app/index.html")
+        new_books_list = Book.objects.order_by("-created_at")[:9]
+        context = {"new_books_list": new_books_list}
+        return render(request, "app/index.html", context)
 
 
 @require_GET
