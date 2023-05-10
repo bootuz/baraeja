@@ -63,3 +63,7 @@
     width: 90px;
     font-weight: bold;
 }
+
+#id_message {
+    height: 200px;
+}
