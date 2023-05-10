@@ -1,8 +1,13 @@
-from django.core.handlers.wsgi import WSGIRequest
-from django.db.models import Q
-from django.shortcuts import render, get_object_or_404
-from django.views.decorators.http import require_GET
+import os
 
+from django.core.handlers.wsgi import WSGIRequest
+from django.core.mail import send_mail
+from django.db.models import Q
+from django.http import BadHeaderError, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404
+from django.views.decorators.http import require_GET, require_POST
+
+from app.forms import ContactForm
 from app.models import Book, Author
 from app.utils import replace_chars_in_query, create_paginator
 
@@ -67,3 +72,19 @@ def get_author(request: WSGIRequest, slug: str):
     page_obj = create_paginator(books_list, request)
     context = {"author": author, "page_obj": page_obj}
     return render(request, "app/author.html", context)
+
+
+@require_POST
+def feedback(request):
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        name = form.cleaned_data["name"]
+        email = form.cleaned_data["email"]
+        message = form.cleaned_data["message"]
+        try:
+            send_mail(
+                name, email + "\n" + message, email, [os.getenv("EMAIL_HOST_USER")]
+            )
+        except BadHeaderError:
+            return HttpResponse("Invalid header found.")
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
