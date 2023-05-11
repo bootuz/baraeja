@@ -1,6 +1,8 @@
+from app.forms import ContactForm
 from app.models import SocialMedia
 
 
 def social_media(request):
     sm = SocialMedia.objects.all()
-    return {"social_media": sm}
+    form = ContactForm()
+    return {"social_media": sm, "form": form}

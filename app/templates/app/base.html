@@ -50,6 +50,40 @@
         </span>
     </div>
     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+        <li class="ms-3">
+            <a class="text-muted" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Къыджепӏэн уиӏэм</a>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Къыджепӏэн уиӏэм</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="feedback" method="post" action="{% url 'books:send_feedback' %}">
+                                {% csrf_token %}
+                                <div class="form-floating mb-3">
+                                    {{ form.name }}
+                                    <label for="{{ form.name.id_for_label }}" class="col-form-label">Уи цӏэр</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    {{ form.email }}
+                                    <label for="{{ form.email.id_for_label }}" class="col-form-label">Уи email-р</label>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    {{ form.message }}
+                                    <label for="{{ form.message.id_for_label }}" class="col-form-label">Тхыгъэр</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Хуэщӏын</button>
+                            <button type="submit" form="feedback" class="btn btn-primary">Егъэхьын</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
         <li class="ms-3"><a class="text-muted" href="#">Проектым елэжьахэр</a></li>
         {% for media in social_media %}
             <li class="ms-3">

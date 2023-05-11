@@ -12,6 +12,7 @@ urlpatterns = [
     path("authors/", views.get_all_authors, name="get_all_authors"),
     path("books/<slug:slug>/", views.get_book, name="get_book"),
     path("authors/<slug:slug>/", views.get_author, name="get_books_of_author"),
+    path("feedback/", views.feedback, name="send_feedback"),
 ]
 
 if settings.DEBUG:
