@@ -147,6 +147,10 @@ class Book(models.Model):
         self.views_count += 1
         self.save()
 
+    @staticmethod
+    def get_new_books(n=9):
+        return Book.objects.order_by("-created_at")[:n]
+
 
 class SocialMedia(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
