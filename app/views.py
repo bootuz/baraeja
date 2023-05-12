@@ -14,7 +14,7 @@ from app.utils import replace_chars_in_query, create_paginator
 
 @require_GET
 def index(request: WSGIRequest):
-    new_books_list = Book.objects.order_by("-created_at")[:9]
+    new_books_list = Book.get_new_books()
     context = {"new_books_list": new_books_list}
     return render(request, "app/index.html", context)
 
@@ -44,7 +44,7 @@ def search(request: WSGIRequest):
         }
         return render(request, "app/results.html", context)
     else:
-        new_books_list = Book.objects.order_by("-created_at")[:9]
+        new_books_list = Book.get_new_books()
         context = {"new_books_list": new_books_list}
         return render(request, "app/index.html", context)
 
