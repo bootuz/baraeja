@@ -1,4 +1,7 @@
 # Baraeja - Circassian online library
+![Build](https://github.com/bootuz/baraeja/actions/workflows/django.yml/badge.svg)
+![Linter](https://github.com/bootuz/baraeja/actions/workflows/linter.yml/badge.svg)
+
 ### About
 Baraeja is a digital platform created to provide easy access to a wide range of books written in the Circassian language. The library aims to serve the needs of the global Circassian community, enabling them to access a vast collection of literature, including fiction, non-fiction, poetry, history, and other genres.
 
