@@ -12,15 +12,6 @@
             {% for book in author.books.all %}
                 <div class="col-md-4">
                     <a class="text-decoration-none" href="{% url 'books:get_book' slug=book.slug %}">{{ book.title }}</a>
-{#                    <p class="text-secondary">#}
-{#                        {% for author in book.authors.all %}#}
-{#                            {% if forloop.counter == book.authors.all.count %}#}
-{#                                {{ author.name }}#}
-{#                            {% else %}#}
-{#                                {{ author.name }},#}
-{#                            {% endif %}#}
-{#                        {% endfor %}#}
-{#                    </p>#}
                 </div>
             {% endfor %}
         </div>
