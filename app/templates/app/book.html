@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-{{ book.title }} - {{ book.authors.all|join:", " }}
+    {{ book.title }} - {{ book.authors.all|join:", " }}
 {% endblock %}
 
 {% block main %}
@@ -21,8 +21,12 @@
                     <li class="text-body-secondary pb-1"><strong>ISBN:</strong> {{ book.isbn }}</li>
                 </ul>
                 <div id="download-buttons">
-                    <a href="{{ book.pdf.url }}" class="btn btn-primary" target="_blank" download>PDF</a>
-                    <a href="{{ book.epub.url }}" class="btn btn-primary">EPUB</a>
+                    {% if book.pdf %}
+                        <a href="{{ book.pdf.url }}" class="btn btn-primary" target="_blank" download>PDF</a>
+                    {% endif %}
+                    {% if book.epub %}
+                        <a href="{{ book.epub.url }}" class="btn btn-primary">EPUB</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
