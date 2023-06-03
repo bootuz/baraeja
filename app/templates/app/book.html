@@ -18,7 +18,9 @@
                     <li class="text-body-secondary pb-1"><strong>Жанрыр:</strong> {{ book.category }}</li>
                     <li class="text-body-secondary pb-1"><strong>Къыдэзыгъэкӏар:</strong> {{ book.publisher }}</li>
                     <li class="text-body-secondary pb-1"><strong>Къыщыдэкӏар:</strong> {{ book.published_at.year }} гъ.</li>
-                    <li class="text-body-secondary pb-1"><strong>ISBN:</strong> {{ book.isbn }}</li>
+                    {% if book.isbn %}
+                        <li class="text-body-secondary pb-1"><strong>ISBN:</strong> {{ book.isbn }}</li>
+                    {% endif %}
                 </ul>
                 <div id="download-buttons">
                     {% if book.pdf %}
