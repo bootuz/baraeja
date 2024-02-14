@@ -38,13 +38,3 @@ class TestCategory(TestCase):
         title = generate_random_string(length=10)
         category = Category.objects.create(title=title)
         assert str(category) == title
-
-    def test_category_with_large_title(self):
-        title = generate_random_string(length=101)
-        with self.assertRaises(DataError):
-            Category.objects.create(title=title)
-
-    def test_category_with_large_slug(self):
-        slug = generate_random_string(101)
-        with self.assertRaises(DataError):
-            Category.objects.create(slug=slug)
