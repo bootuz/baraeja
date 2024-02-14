@@ -22,10 +22,10 @@ def index(request: WSGIRequest):
 @require_GET
 def get_book(request: WSGIRequest, slug: str):
     book = get_object_or_404(Book, slug=slug)
-    if not request.session.get(str(book.id), False):
+    book_id = str(book.id)
+    if not request.session.get(book_id, False):
         book.increment_view_count()
-    request.session[str(book.id)] = True
-
+    request.session[book_id] = True
     context = {"book": book}
     return render(request, "app/book.html", context)
 

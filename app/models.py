@@ -39,7 +39,7 @@ class Author(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("books:author", args=[self.slug])
+        return reverse("books:get_books_of_author", args=[self.slug])
 
 
 class Category(models.Model):
@@ -141,7 +141,7 @@ class Book(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse("books:book", args=[self.slug])
+        return reverse("books:get_book", args=[self.slug])
 
     def increment_view_count(self):
         self.views_count += 1

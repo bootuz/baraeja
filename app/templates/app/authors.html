@@ -12,7 +12,7 @@
         <div class="row px-0 pt-3 fw-light">
             {% for author in authors_list %}
                 <div class="col-md-4">
-                    <a class="text-decoration-none" href="{% url 'books:get_books_of_author' slug=author.slug %}">{{ author.name }}</a>
+                    <a class="text-decoration-none" href="{{ author.get_absolute_url }}">{{ author.name }}</a>
                     <p class="text-secondary">
                         Тхылъу диӏэр: {{ author.books.count }}
                     </p>
