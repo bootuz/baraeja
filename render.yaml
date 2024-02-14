@@ -1,6 +1,6 @@
 databases:
-  - name: baraeja
-    databaseName: baraeja
+  - name: prod
+    databaseName: baraeja_h5dk
     user: baraeja
     region: frankfurt
 
